@@ -56,7 +56,7 @@ and no mis-selling.
             
         </div>
         <div className='text-center'>
-        < Button    variant="contained"  href="https://unique-tanuki-29cc39.netlify.app/" style={{margin:"50px auto"}} > Sign up for free  </ Button >
+        < Button    variant="contained"  href="https://yourdashboard.netlify.app/" style={{margin:"50px auto"}} > Sign up for free  </ Button >
         </div>
        
        </div>

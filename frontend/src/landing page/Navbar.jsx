@@ -52,7 +52,7 @@ function Navbar() {
               </li> 
               <li className="nav-item">
               <Stack direction="row" spacing={2}>
-                <Button  variant="contained" style={{fontSize:"90%",marginLeft:"60px"}}  aria-current="page" href="https://unique-tanuki-29cc39.netlify.app/signup" >
+                <Button  variant="contained" style={{fontSize:"90%",marginLeft:"60px"}}  aria-current="page" href="https://yourdashboard.netlify.app/signup" >
                  Sign up
                 </Button>
                </Stack >
