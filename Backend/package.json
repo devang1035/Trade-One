@@ -1,6 +1,7 @@
 {
   "name": "Backend",
   "version": "1.0.0",
+  "proxy": "https://trade-one.onrender.com",
   "description": "",
   "main": "index.js",
   "scripts": {
