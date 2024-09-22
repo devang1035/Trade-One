@@ -21,8 +21,6 @@ mongoose
   .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
 
-
-
 app.get("/allholdings",async(req,res)=>{
   let allholdings = await HoldingModel.find({});
   res.json(allholdings);
@@ -54,6 +52,7 @@ app.use(
     origin: ["https://yourdashboard.netlify.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept'],
   })
 );
 
