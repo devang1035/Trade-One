@@ -20,12 +20,11 @@ const Home = () => {
         navigate("/login");
       }
 
-      const { data } = setTimeout(async() => {
-          await axios.post(
-          "https://trade-one.onrender.com",
-          {},
-          { withCredentials: true })
-      }, 6000);
+      const { data } = await axios.post(
+        "https://trade-one.onrender.com/",
+        {},
+        { withCredentials: true }
+      );
 
       const { status, user } = data;
       setUsername(user);
