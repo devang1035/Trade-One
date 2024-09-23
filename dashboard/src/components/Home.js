@@ -19,11 +19,13 @@ const Home = () => {
       if (!cookies.token) {
         navigate("/login");
       }
-      const { data } = await axios.post(
-        "https://trade-one.onrender.com",
-        {},
-        { withCredentials: true }
-      );
+      setTimeout(async() => {
+        const { data } = await axios.post(
+          "https://trade-one.onrender.com",
+          {},
+          { withCredentials: true }
+        );
+      }, 5000);
       const { status, user } = data;
       setUsername(user);
       
