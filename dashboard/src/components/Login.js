@@ -51,6 +51,7 @@ function Login () {
       }
     } catch (error) {
       console.log(error);
+      handleError(error.response ? error.response.data.message : "Something went wrong!");
     }
     setInputValue({
       ...inputValue,

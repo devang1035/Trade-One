@@ -11,7 +11,7 @@ const Menu = ({username}) => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   
   const navigate = useNavigate();
-    const [cookies, removeCookie] = useCookies([]);
+    const [, removeCookie] = useCookies([]);
     
       const handleLogout = () => {
       Logout(navigate, removeCookie);  
