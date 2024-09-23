@@ -31,7 +31,7 @@ const Menu = ({username}) => {
 
   return (
     <div className="menu-container">
-      <img src="./TradeOne.png" style={{ width: "50px" ,cursor:"pointer" }} />
+      <img src="./TradeOne.png" alt="uu" style={{ width: "50px" ,cursor:"pointer" }} />
       <div className="menus">
         <ul>
           <li>
