@@ -30,7 +30,9 @@ const Home = () => {
         navigate("/login");
       }
 
-      const { status, user } = setTimeout(auth(), 6000);;
+      const { status, user } = setTimeout(async()=>{
+        await auth()
+      }, 6000);;
       setUsername(user);
       
        if (status) {
