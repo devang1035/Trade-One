@@ -14,19 +14,23 @@ const Home = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
 
+    const auth = async()=>{
+    const { data } = await axios.post(
+      "https://trade-one.onrender.com/",
+      {},
+      { withCredentials: true }
+    );
+
+    return data;
+  }
+
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
         navigate("/login");
       }
 
-      const { data } = await axios.post(
-        "https://trade-one.onrender.com/",
-        {},
-        { withCredentials: true }
-      );
-
-      const { status, user } = data;
+      const { status, user } = setTimeout(auth(), 6000);;
       setUsername(user);
       
        if (status) {
