@@ -6,6 +6,7 @@ module.exports.userVerification = (req, res) => {
   const token = setTimeout(() => {
     return req.cookies.token;
   }, 6000);
+  console.log(token);
   if (!token) {
     return res.status(400).json({ status: false});
   }
