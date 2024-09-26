@@ -15,37 +15,24 @@ const Home = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
 
-    const auth = async()=>{
-    const { data } = await axios.post(
-      "https://trade-one.onrender.com/",
-      {},
-      { withCredentials: true }
-    );
-
-    return data;
-  }
-
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
         navigate("/login");
       }
-
-      const { status, user } = setTimeout(async()=>{
-        await auth()
-      }, 6000);;
+      const { data } = await axios.post(
+        "https://trade-one.onrender.com/",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
       setUsername(user);
-      
-       if (status) {
-        toast(`Hello , ${user}`, {
-          position: "top-right",
-        });
-      } else {
-
-        Logout(navigate, removeCookie);
-      }
+      return status
+        ? toast(`Hello ${user}`, {
+            position: "top-right",
+          })
+        : Logout(navigate,removeCookie);
     };
-  
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
  
