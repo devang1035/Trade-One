@@ -8,7 +8,7 @@ const {OrderModel} = require("./models/OrderModel");
 const {UserModel} = require("./models/UserModel");
 const authRoute = require("./Routes/AuthRoute");
 const cookieParser = require("cookie-parser");
-const PORT= 3002;
+const PORT= process.env.PORT;
 const URL= process.env.MONGO_URL;
 
 const app = express();
