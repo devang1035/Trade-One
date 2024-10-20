@@ -23,7 +23,10 @@ const Home = () => {
       const { data } = await axios.post(
         "https://trade-one.onrender.com/",
         {},
-        { withCredentials: true }
+        { 
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true 
+        }
       );
       const { status, user } = data;
       setUsername(user);
