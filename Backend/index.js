@@ -24,7 +24,7 @@ mongoose
 
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: "https://yourdashboard.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE",'OPTIONS'],
       credentials: true,
       allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept'],
