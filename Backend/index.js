@@ -27,7 +27,7 @@ mongoose
       origin: "https://yourdashboard.netlify.app",
       methods: ["GET", "POST", "PUT", "DELETE",'OPTIONS'],
       credentials: true,
-      allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept','application/json'],
+      allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept'],
     })
   );
   
