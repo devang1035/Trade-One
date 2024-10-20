@@ -13,6 +13,7 @@ const URL= process.env.MONGO_URL;
 
 const app = express();
 
+
 mongoose
   .connect(URL, {
     useNewUrlParser: true,
@@ -20,6 +21,22 @@ mongoose
   })
   .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
+
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST", "PUT", "DELETE",'OPTIONS'],
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept'],
+    })
+  );
+  
+  app.use(cookieParser());
+  
+  app.use(express.json());
+  
+  app.use("/", authRoute);
+  
 
 app.get("/allholdings",async(req,res)=>{
   let allholdings = await HoldingModel.find({});
@@ -47,17 +64,3 @@ app.listen(PORT,()=>{
     console.log("app started");
 });
 
-app.use(
-  cors({
-    origin: ["https://yourdashboard.netlify.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With', 'Accept'],
-  })
-);
-
-app.use(cookieParser());
-
-app.use(express.json());
-
-app.use("/", authRoute);

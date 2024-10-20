@@ -8,13 +8,13 @@ module.exports.Signup = async (req, res, next) => {
     const { email, username, password} = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.json({ message: "User already exists" });
+      return res.status(400).json({ message: "User already exists", success: false });
     }
     const user = await User.create({ email, username, password});
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
       withCredentials: true,
-      httpOnly: false,
+       httpOnly: false,
     });
     res
       .status(201)
@@ -22,6 +22,7 @@ module.exports.Signup = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
 
@@ -42,7 +43,7 @@ module.exports.Login = async (req, res, next) => {
        const token = createSecretToken(user._id);
        res.cookie("token", token, {
         withCredentials: true,
-         httpOnly: false,
+        httpOnly: false,   
        });
        res.status(201).json({ message: "User logged in successfully", success: true });
        next();
