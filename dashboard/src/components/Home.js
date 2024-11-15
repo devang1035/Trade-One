@@ -18,11 +18,13 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
+       
         navigate("/login");
+        console.log("you dont have token!");
       }
       const { data } = await axios.post(
-        "https://trade-one.onrender.com/",
-        {},
+        "http://localhost:3002/",
+        null,
         { withCredentials: true }
       );
       const { status, user } = data;

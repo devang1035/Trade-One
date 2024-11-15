@@ -6,7 +6,7 @@ const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(() => {
-    axios.get("https://trade-one.onrender.com/allpositions").then((res) => {
+    axios.get("http://localhost:3002/allpositions").then((res) => {
       setAllPositions(res.data);
     });
   }, []);
@@ -17,6 +17,7 @@ const Positions = () => {
 
       <div className="order-table">
         <table>
+        <tbody>
           <tr>
             <th>Product</th>
             <th>Instrument</th>
@@ -47,6 +48,7 @@ const Positions = () => {
               </tr>
             );
           })}
+            </tbody>
         </table>
       </div>
     </>

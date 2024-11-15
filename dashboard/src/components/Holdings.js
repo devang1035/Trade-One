@@ -7,7 +7,7 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("https://trade-one.onrender.com/allholdings").then((res) => {
+    axios.get("http://localhost:3002/allholdings").then((res) => {
       setAllHoldings(res.data);
     });
   }, []);
@@ -30,6 +30,7 @@ const Holdings = () => {
 
       <div className="order-table">
         <table>
+        <tbody>
           <tr>
             <th>Instrument</th>
             <th>Qty.</th>
@@ -40,6 +41,7 @@ const Holdings = () => {
             <th>Net chg.</th>
             <th>Day chg.</th>
           </tr>
+          
 
           {allHoldings.map((stock, index) => {
             const curValue = stock.price * stock.qty;
@@ -47,6 +49,7 @@ const Holdings = () => {
             const profClass = isProfit ? "profit" : "loss";
 
             return (
+              
               <tr key={index}>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
@@ -57,10 +60,13 @@ const Holdings = () => {
                   {(curValue - stock.avg * stock.qty).toFixed(2)}
                 </td>
                 <td className={profClass}>{stock.net}</td>
+                <td className={profClass}>{stock.day}</td>
 
               </tr>
+          
             );
           })}
+         </tbody>
         </table>
       </div>
 
