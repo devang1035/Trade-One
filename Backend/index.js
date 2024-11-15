@@ -59,6 +59,8 @@ app.post("/newOrder",async(req,res)=>{
     res.send("Order Saved!");
 });
 
+app.use("/.netlify/functions/app", router);
+module.exports.handler = serverless(app);
 
 app.listen(PORT,()=>{
     console.log("app started");

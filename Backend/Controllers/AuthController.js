@@ -11,7 +11,7 @@ module.exports.Signup = async (req, res, next) => {
       return res.status(400).json({ message: "User already exists", success: false });
     }
     const user = await User.create({ email, username, password});
-    const token = createSecretToken(user._id);
+    const token = await createSecretToken(user._id);
     res.cookie("token", token, {
       withCredentials: true,
        httpOnly: false,
@@ -40,7 +40,7 @@ module.exports.Login = async (req, res, next) => {
       if (!auth) {
         return res.json({message:'Incorrect password or email' }) 
       }
-       const token = createSecretToken(user._id);
+       const token = await createSecretToken(user._id);
        res.cookie("token", token, {
         withCredentials: true,
         httpOnly: false,   
