@@ -23,7 +23,7 @@ const Home = () => {
         console.log("you dont have token!");
       }
       const { data } = await axios.post(
-        "https://trade-one.onrender.com/",
+        "https://trade-one.onrender.com/home",
         {},
         { withCredentials: true }
       );
