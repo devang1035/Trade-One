@@ -10,8 +10,6 @@ const authRoute = require("./Routes/AuthRoute");
 const cookieParser = require("cookie-parser");
 const PORT= process.env.PORT;
 const URL= process.env.MONGO_URL;
-const router = express.Router();
-const serverless = require("serverless-http");
 const app = express();
 
 
@@ -59,9 +57,6 @@ app.post("/newOrder",async(req,res)=>{
     newOrder.save();
     res.send("Order Saved!");
 });
-
-app.use("/.netlify/functions/app", router);
-module.exports.handler = serverless(app);
 
 app.listen(PORT,()=>{
     console.log("app started");
